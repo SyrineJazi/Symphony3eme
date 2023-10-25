@@ -1,0 +1,71 @@
+<style>
+.author-image {
+    width: 100px; /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
+}
+.author-table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .author-table, .author-table th, .author-table td {
+        border: 1px solid #000;
+        text-align: center;
+    }
+
+    .author-table th, .author-table td {
+        padding: 10px;
+    }
+</style>
+
+{% include 'reusable/headertab.html.twig' %}
+
+<br>
+<br>
+<br>
+
+<table border="1" style="border-collapse: collapse; width: 100%;">
+    <tr>
+        <td style="text-align:center;"><strong>PORTRAIT</strong></td>
+        <td style="text-align:center;"><strong>INFORMATION</strong></td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #000; text-align: center; vertical-align: middle;">
+            <img class="author-image" src="{{ asset('images/' ~ author.image) }}" alt="Author Portrait" style="max-width: 200px;" />
+        </td>
+        <td style="border: 1px solid #000; padding: 10px;">
+            <p><strong>{{ author.name|upper }}</strong></p>
+            <p>Country: {{ author.country }}</p>
+            <p>Age: {{ author.age }}</p>
+            <p>Number of books: {{ author.getNbBooks() }}</p>
+        </td>
+    </tr>
+</table>
+
+
+<h1><strong>List of published books</strong></h1>
+
+
+{% if author.books is not defined or author.books is empty %}
+    <h3>Aucun livre repertorié</h3>
+{% else %}
+    <table class="author-table">
+            <tr>
+            <td>Title</td>
+            <td>Genre</td>
+            <td>Author</td>
+            <td>Action</td>
+
+            </tr>
+        {% for unit in author.books %}
+        {%if unit.published == 1 %}
+            <tr>
+                <td>{{ unit.title|upper }}</td>
+                <td>{{ unit.genre|upper }}</td>
+                <td><a href="{{ path('author-details',{'name':unit.author.name}) }}">{{ unit.author.name|upper }}</a></td>
+                <td><a href="{{ path('edit-book',{'id':unit.ref}) }}"><strong>Edit</strong></a>&nbsp;&nbsp;<a href="{{ path('delete-book', {'id':unit.ref}) }}"><strong>Delete</strong></a></td>
+            </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+{% endif %}

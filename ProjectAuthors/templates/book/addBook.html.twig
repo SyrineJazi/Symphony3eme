@@ -1,0 +1,59 @@
+<style>
+    .form-container {
+        width: 400px; 
+        margin: 0 auto; 
+        text-align: center;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+
+    .form-group {
+        margin: 10px 0;
+    }
+
+    .centered-button {
+        display: block;
+        margin: 10px auto;
+    }
+</style>
+
+
+{% include 'reusable/headertab.html.twig' %}
+
+<br>
+<br>
+<br>
+
+{{ form_start(book_form) }}
+<div class="form-container">
+    <b>Reference</b> {{ form_widget(book_form.ref) }}
+    
+    <div class="form-group">
+        {{ form_label(book_form.title, "Title") }}
+        {{ form_widget(book_form.title) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_label(book_form.genre, "Genre") }}
+        {{ form_widget(book_form.genre) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_label(book_form.published, "Published") }}
+        {{ form_widget(book_form.published) }}
+    </div>
+
+     <div class="form-group">
+         {{ form_label(book_form.author, "Author") }}
+        {{ form_widget(book_form.author) }}
+    </div>
+
+    <div class="form-group">
+        <div style="text-align: center;">
+            <button type="submit" class="centered-button">Submit</button>
+        </div>
+    </div>
+</div>
+{{ form_end(book_form) }}
+

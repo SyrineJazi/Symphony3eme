@@ -1,0 +1,49 @@
+<style>
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+
+.tablink:hover {
+  background-color: #777;
+}
+
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 50px;
+  text-align: center;
+}
+
+</style>
+
+<div id="Authors" class="tabcontent">
+  <h1>Authors</h1>
+</div>
+
+<div id="Books" class="tabcontent">
+  <h1>Books</h1>
+</div>
+
+<div id="add_author" class="tabcontent">
+  <h1>Add author</h1>
+</div>
+
+
+<div id="add_book" class="tabcontent">
+  <h1>Add book</h1>
+</div>
+
+<a href="{{ path('author-list')  }}"><button class="tablink">Authors</button></a>
+<a href="{{ path('add-author')  }}"><button class="tablink">Add author</button></a>
+<a href="{{ path('book-list')  }}"><button class="tablink">Books</button></a>
+<a href="{{ path('add-book')  }}"><button class="tablink">Add book</button></a>
+

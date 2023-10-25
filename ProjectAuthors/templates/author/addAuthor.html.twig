@@ -1,0 +1,51 @@
+<style>
+    /* CSS */
+    .form-container {
+        width: 400px; /* Adjust the width as needed */
+        margin: 0 auto; /* Center the container horizontally */
+        text-align: center; /* Center text within the container */
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px; /* Add rounded corners */
+    }
+
+    .form-group {
+        margin: 10px 0; /* Add space between form elements */
+    }
+
+    .centered-button {
+        display: block;
+        margin: 10px auto; /* Center the button horizontally */
+    }
+</style>
+
+{% include 'reusable/headertab.html.twig' %}
+
+<br>
+<br>
+<br>
+
+{{ form_start(author_form) }}
+<div class="form-container">
+    <div class="form-group">
+        {{ form_label(author_form.name, "Name") }}
+        {{ form_widget(author_form.name) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(author_form.country, "Country") }}
+        {{ form_widget(author_form.country) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(author_form.age, "Age") }}
+        {{ form_widget(author_form.age) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(author_form.image, "Image") }}
+        {{ form_widget(author_form.image) }}
+    </div>
+    <div class="form-group">
+        <button type="submit" class="centered-button">Submit</button>
+    </div>
+</div>
+{{ form_end(author_form) }}
+
